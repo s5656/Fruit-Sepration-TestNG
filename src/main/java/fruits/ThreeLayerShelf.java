@@ -6,27 +6,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-public class ThreeLayerShelf implements Shelf{
+
+public class ThreeLayerShelf implements Shelf {
     public void sort(ArrayList<Fruit> fruit, Function<Integer, String> sortByProperty) {
-        HashMap<String, List<Fruit>> sorted = new HashMap<>();
+        HashMap<String, List<Fruit>> shelfLayer = new HashMap<>();
 
-        for(int i=0; i<fruit.size();i++){
-            String data= sortByProperty.apply(i);
+        for (int i = 0; i < fruit.size(); i++) {
+            String data = sortByProperty.apply(i);
 
-            if(sorted.containsKey(data)){
-                List<Fruit>fruitList=new ArrayList<>();
+            if (shelfLayer.containsKey(data)) {
+                List<Fruit> fruitList = new ArrayList<>();
 
-                fruitList.addAll(sorted.get(data));
+                fruitList.addAll(shelfLayer.get(data));
 
                 fruitList.add(fruit.get(i));
-                sorted.put(data,fruitList);
-            }
-            else {
-                sorted.put(data,List.of(fruit.get(i)));
+                shelfLayer.put(data, fruitList);
+            } else {
+                shelfLayer.put(data, List.of(fruit.get(i)));
             }
         }
-        for (Map.Entry<String,List<Fruit>> map : sorted.entrySet()) {
-            System.out.println(map.getKey()+" : "+ map.getValue());
+        for (Map.Entry<String, List<Fruit>> map : shelfLayer.entrySet()) {
+            System.out.println(map.getKey() + " : " + map.getValue());
         }
     }
 }

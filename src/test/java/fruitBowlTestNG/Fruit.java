@@ -1,4 +1,4 @@
-package fruits;
+package fruitBowlTestNG;
 
 public class Fruit {
     private String name;
@@ -12,7 +12,6 @@ public class Fruit {
         this.taste = taste;
         this.size = size;
     }
-
     public String getColor() {
         return color;
     }
